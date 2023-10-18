@@ -5,9 +5,8 @@ import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
 
-
 export default function About() {
-    const { ref } = useSectionInView
+  const { ref } = useSectionInView("About");
 
   return (
     <motion.section
@@ -20,9 +19,9 @@ export default function About() {
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">
-        I am a <span className="font-medium">third year</span>  undergraduate at <span className="font-medium"> University of Waterloo</span> studying Mathematics, Combinatorics and Optimization. 
+        I am a <span className="font-medium">third year</span> undergraduate at <span className="font-medium"> University of Waterloo</span> studying Mathematics, Combinatorics and Optimization. 
         I have always been passsionate about learning new things and finding the most optimal solutions to problems, thus 
-        coding has been something I've always gravitated towards. 
+        coding has been something I&apos;ve always gravitated towards. 
         I am primarily a self-taught <span className="font-medium">fullstack</span> developer with a strong foundation 
         in <span className="font-medium">data structures and algorithms, object-oriented design and programming, and databases</span>.
         My primary coding language is <span className="font-medium">python</span> but I am also comfortable in <span className="font-medium">C++, Javascript, and Typescript. </span>
@@ -32,8 +31,8 @@ export default function About() {
       </p>
 
       <p>
-        <span className="italic">When I'm not coding</span>, I enjoy doing sports such as basketball, soccer, and volleyball. 
-        I also enjoy going to the gym, going on runs and seeing nice views on a hike. When I'm feeling less active, you can find me playing
+        <span className="italic">When I&apos;m not coding</span>, I enjoy doing sports such as basketball, soccer, and volleyball. 
+        I also enjoy going to the gym, going on runs and seeing nice views on a hike. When I&apos;m feeling less active, you can find me playing
         games such as League of Legends (sorry), and studying chess. {" "} <span className="font-medium"> I look forward to get in touch!</span>
       </p>
     </motion.section>
