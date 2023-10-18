@@ -1,0 +1,100 @@
+"use client";
+
+import Image from 'next/image'
+import React from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link';
+import { HiDownload } from 'react-icons/hi';
+import { BsLinkedin } from 'react-icons/bs';
+import { FaGithubSquare } from 'react-icons/fa';
+import { useSectionInView } from "@/lib/hooks";
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { TypeAnimation } from "react-type-animation";
+
+
+export default function Intro() {
+    const { ref } = useSectionInView("Home", 0.5);
+    const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+
+  return (
+    <section 
+        ref={ref}
+        id="home"
+        className="mb-28 max-w-[50rem] text-center sm:mb:-0 scroll-mt-[100rem]">
+        
+
+
+        <div className="flex items-center justify-center">
+            <div className="relative">
+                <motion.div
+                    initial = {{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1}}
+                    transition={{
+                        type: "tween",
+                        duration: 0.2,
+                    }}>
+                    <Image 
+                        className="h-23 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
+                        src="https://media.licdn.com/dms/image/D5603AQFwGM4jcvVV5A/profile-displayphoto-shrink_800_800/0/1695099195205?e=1702512000&v=beta&t=01-7zW1-ZzsAC0ZlEV__a1tx18P3xTE48sb3MaSXtI8"
+                        width={192}
+                        height={192}
+                        quality={95}
+                        priority={true}
+                        alt="William Portrait"/>
+                </motion.div>
+            </div>
+        </div>
+
+        <motion.h1 className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5]"
+            initial={{opacity: 0, y: 100}}
+            animate={{ opacity: 1, y: 0 }}>
+            <span className="font-bold">
+                Hi, I'm William! 
+            </span> {" "}
+             I am currently 
+             <br></br>
+             
+             <TypeAnimation
+              sequence={[
+                "Seeking SWE internships for Winter and Summer 2024!", 
+                900,
+                "A junior at University of Waterloo studying Mathematics, Combinatorics and Optimization",
+                900,
+              ]}
+              wrapper="span"
+              speed={40}
+              repeat={Infinity}
+            />
+            
+        </motion.h1>
+
+        <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 px-4 text-lg font-medium"
+            initial={{ opacity: 0, y: 100}}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1,}}>
+
+             <Link
+                href="#contact"
+                className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
+                onClick={() => {
+                    setActiveSection("Contact");
+                    setTimeOfLastClick(Date.now());
+          }}
+        > Contact me </Link>
+            
+            <a className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110
+            hover:scale-110 active:scale-105 transition cursor-pointer border border-black dark:bg-white/10" 
+                href="/william_chang_resume.pdf" download="William_Chang_Resume">
+                Download Resume <HiDownload className="opacity-60 group-hover:translate-y-1 transition"/> {" "}
+            </a>
+
+            <a className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
+                href="https://linkedin.com/in/williamchangg"
+                target="_blank">
+                <BsLinkedin />
+            </a>
+
+        </motion.div>
+    </section>
+  )
+}
